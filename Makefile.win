@@ -1,0 +1,28 @@
+# Project: anti-red-spider
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o
+LINKOBJ  = main.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/TDM-GCC/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/TDM-GCC/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/TDM-GCC/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/TDM-GCC/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/TDM-GCC/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/TDM-GCC/x86_64-w64-mingw32/include"
+BIN      = anti-red-spider.exe
+CXXFLAGS = $(CXXINCS) -std=c++20
+CFLAGS   = $(INCS) -std=c++20
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
