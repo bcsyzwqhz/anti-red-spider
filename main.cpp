@@ -1,12 +1,6 @@
-#include <bits/stdc++.h>
-#include <windows.h>
-using namespace std;
-void movexy(short x, short y){
-    COORD position={x, y};
-    HANDLE hOut=GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleCursorPosition(hOut, position);
-}
+#include"lib.h"
 int main(){
+	ios::sync_with_stdio(0);
 	HWND h;
 	h=FindWindow("ConsoleWindowClass",NULL);
     movexy(37, 7);
