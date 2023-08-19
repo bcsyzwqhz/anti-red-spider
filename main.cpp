@@ -66,6 +66,11 @@ int main(){
         	system("taskkill /f /t /im RJAgent.exe");
         	system("taskkill /f /t /im RJService.exe");
         	system("taskkill /f /t /im RG-CloudManagerRemote.exe");
+        	system("taskkill /f /t /im CMApp.exe");
+        	system("taskkill /f /t /im CMService.exe");
+        	system("taskkill /f /t /im CMLauncher.exe");
+        	system("taskkill /f /t /im Launcher.exe");
+        	system("taskkill /f /t /im RG-CloudManagerRemote_Setup.exe");
         }
             
 	} 
