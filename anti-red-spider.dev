@@ -27,8 +27,9 @@ CommandLine=
 Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=8
+CompilerSet=0
 CompilerSettings=0000000000000000000000000
+UnitCount=2
 
 [VersionInfo]
 Major=1
@@ -48,4 +49,24 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
+
+[Unit1]
+FileName=main.cpp
+CompileCpp=1
+Folder=anti-red-spider
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=lib.h
+CompileCpp=1
+Folder=anti-red-spider
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 

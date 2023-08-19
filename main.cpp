@@ -62,7 +62,12 @@ int main(){
         Sleep(1000);
         ShowWindow(h,0);
         while(1)
-            system("taskkill /f /t /im RJAgent.exe");
+        {
+        	system("taskkill /f /t /im RJAgent.exe");
+        	system("taskkill /f /t /im RJService.exe");
+        	system("taskkill /f /t /im RG-CloudManagerRemote.exe");
+        }
+            
 	} 
     return 0;
 }
