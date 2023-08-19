@@ -14,6 +14,8 @@ int main(){
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
     cout<<"                          伽卡他卡电子教室 - 输入 k-yk即可反击"<<endl;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    cout<<"                                锐捷云教室 - 输入 k-rj即可反击"<<endl;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
     cout<<"                                  启动成功后，窗口会自动消失，"<<endl;
     cout<<"                                        不要重复打开！"<<endl;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
@@ -52,6 +54,16 @@ int main(){
         while(1)
             system("taskkill /f /t /im Student.exe");
     } 
+    if(s=="k-rj")
+	{
+		system("cls");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+        cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
+        Sleep(1000);
+        ShowWindow(h,0);
+        while(1)
+            system("taskkill /f /t /im RJAgent.exe");
+	} 
     return 0;
 }
 
