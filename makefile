@@ -1,9 +1,11 @@
 CC = g++
-CCFLAGS := -Wall -std=c++20
+FLAGS = -Wall -std=c++20
 TARGET = anti-red-spider
-
+STOPPER = stopper
 $(TARGET): main.cpp
-	$(CC) -Wall -std=c++20 main.cpp -o $(TARGET)
+	$(CC) $(FLAGS) main.cpp -o $(TARGET)
+	$(CC) $(FLAGS) stopper.cpp -o $(STOPPER)
 
 clean:
 	$(RM) anti-red-spider
+	$(RM) stopper
