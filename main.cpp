@@ -18,7 +18,7 @@ int main()
     cout<<"                                锐捷云教室 - 输入 k-rj即可反击"<<endl;
 	setcolor(10);
     cout<<"			      			如要同时反击多个软件，请用英文半角逗号分隔"<<endl;
-    cout<<"											比如：k-rs,k-rj"<<endl;
+    cout<<"	                                 	比如：k-rs,k-rj"<<endl;
     setcolor(13);
 	cout<<"                                      建议使用管理员模式启动"<<endl;
 	setcolor(7);
