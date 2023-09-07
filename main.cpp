@@ -16,68 +16,62 @@ int main()
     cout<<"                          伽卡他卡电子教室 - 输入 k-yk即可反击"<<endl;
 	setcolor(7);
     cout<<"                                锐捷云教室 - 输入 k-rj即可反击"<<endl;
-    setcolor(6);
-    cout<<"                                  启动成功后，窗口会自动消失，"<<endl;
-    cout<<"                                        不要重复打开！"<<endl;
 	setcolor(10);
-    cout<<"			  注意：本系统仅支持Windows 10及以下系统，"<<endl;
-	cout<<"				Windows 11窗口不会消失！" <<endl;
+    cout<<"			      			如要同时反击多个软件，请用英文半角逗号分隔"<<endl;
+    cout<<"											比如：k-rs,k-rj"<<endl;
+    setcolor(13);
 	cout<<"                                      建议使用管理员模式启动"<<endl;
 	setcolor(7);
     cout<<"    input >>> ";
     string s;
+    bool rj=0,yk=0,rs=0,jy=0;
     cin>>s;
-    if(s=="k-rs")
-	{
-        system("cls");
-        setcolor(4);
+    s+=',';
+    int len=s.size(),last=0,leng=1;
+    for(int i=1;i<len;i++)
+    {
+    	if(s[i]==',')
+    	{
+    		if(s.substr(last,leng)=="k-rs")	rs=1;
+    		if(s.substr(last,leng)=="k-jy")jy=1;
+    		if(s.substr(last,leng)=="k-rj")	rj=1;
+    		if(s.substr(last,leng)=="k-yk")	yk=1;
+    		last=i+1,leng=0;
+    	}
+    	else
+    	leng++;
+    	
+    }
+    system("cls");
+    if(rs) 
+    {
+    	setcolor(4);
         cout<<"                                  红蜘蛛反击系统启动成功"<<endl;
-        Sleep(1000);
-        ShowWindow(h,0);
-        while(1)
-            system("taskkill /f /t /im REDAgent.exe");
     }
-    if(s=="k-jy")
-	{
-        system("cls");
-        setcolor(11);
+    if(jy)
+    {
+    	setcolor(11);
         cout<<"                                  极域反击系统启动成功"<<endl;
-        Sleep(1000);
-        ShowWindow(h,0);
-        while(1)
-        system("taskkill /f /t /im StudentMain.exe");
-        
     }
-    if(s=="k-yk")
-	{
-        system("cls");
-        setcolor(12);
+    if(yk)
+    {
+    	setcolor(12);
         cout<<"                                  伽卡他卡反击系统启动成功"<<endl;
-        Sleep(1000);
-        ShowWindow(h,0);
-        while(1)
-            system("taskkill /f /t /im Student.exe");
-    } 
-    if(s=="k-rj")
-	{
-		system("cls");
-        setcolor(12);
+    }
+    if(rj)
+    {
+    	setcolor(12);
         cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
-        Sleep(1000);
-        ShowWindow(h,0);
-        while(1)
-        {
-        	system("taskkill /f /t /im RJAgent.exe");
-        	system("taskkill /f /t /im RJService.exe");
-        	system("taskkill /f /t /im RG-CloudManagerRemote.exe");
-        	system("taskkill /f /t /im CMApp.exe");
-        	system("taskkill /f /t /im CMService.exe");
-        	system("taskkill /f /t /im CMLauncher.exe");
-        	system("taskkill /f /t /im Launcher.exe");
-        	system("taskkill /f /t /im RG-CloudManagerRemote_Setup.exe");
-        }
-            
-	} 
+    }
+    Sleep(1000);
+    ShowWindow(h,SW_HIDE);
+ 	while(1)
+	{
+		k_rj(rj);
+		k_yk(yk);
+		k_jy(jy);
+		k_rs(rs);
+	}
     return 0;
 }
 

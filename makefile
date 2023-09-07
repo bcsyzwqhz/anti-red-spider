@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -Wall -std=c++20
+FLAGS = -Wall -std=c++14
 TARGET = anti-red-spider
 STOPPER = stopper
 $(TARGET): main.cpp
