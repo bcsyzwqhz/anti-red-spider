@@ -5,22 +5,22 @@ int main()
 	HWND h;
 	h=FindWindow("ConsoleWindowClass",NULL);
     movexy(37, 7);
-    cout<<"·´µç×Ó½ÌÊÒÏµÍ³"<<endl;
+    cout<<"åç”µå­æ•™å®¤ç³»ç»Ÿ"<<endl;
     cout<<endl;
-    cout<<"                                     Ä¿Ç°¿ÉÒÔ·´»÷:"<<endl;
+    cout<<"                                     ç›®å‰å¯ä»¥åå‡»:"<<endl;
     setcolor(4);
-    cout<<"                      ºìÖ©Öë¶àÃ½ÌåÍøÂç½ÌÊÒ - ÊäÈë k-rs¼´¿É·´»÷"<<endl;
+    cout<<"                      çº¢èœ˜è››å¤šåª’ä½“ç½‘ç»œæ•™å®¤ - è¾“å…¥ k-rså³å¯åå‡»"<<endl;
 	setcolor(11);
-    cout<<"                              ¼«Óòµç×Ó½ÌÊÒ - ÊäÈë k-jy¼´¿É·´»÷"<<endl;
+    cout<<"                              æžåŸŸç”µå­æ•™å®¤ - è¾“å…¥ k-jyå³å¯åå‡»"<<endl;
     setcolor(12);
-    cout<<"                          Ù¤¿¨Ëû¿¨µç×Ó½ÌÊÒ - ÊäÈë k-yk¼´¿É·´»÷"<<endl;
+    cout<<"                          ä¼½å¡ä»–å¡ç”µå­æ•™å®¤ - è¾“å…¥ k-ykå³å¯åå‡»"<<endl;
 	setcolor(7);
-    cout<<"                                Èñ½ÝÔÆ½ÌÊÒ - ÊäÈë k-rj¼´¿É·´»÷"<<endl;
+    cout<<"                                é”æ·äº‘æ•™å®¤ - è¾“å…¥ k-rjå³å¯åå‡»"<<endl;
 	setcolor(10);
-    cout<<"			      			ÈçÒªÍ¬Ê±·´»÷¶à¸öÈí¼þ£¬ÇëÓÃÓ¢ÎÄ°ë½Ç¶ººÅ·Ö¸ô"<<endl;
-    cout<<"	                                 	±ÈÈç£ºk-rs,k-rj"<<endl;
+    cout<<"			   		å¦‚è¦åŒæ—¶åå‡»å¤šä¸ªè½¯ä»¶ï¼Œè¯·ç”¨è‹±æ–‡åŠè§’é€—å·åˆ†éš”"<<endl;
+    cout<<"	                            	æ¯”å¦‚ï¼šk-rs,k-rj"<<endl;
     setcolor(13);
-	cout<<"                                      ½¨ÒéÊ¹ÓÃ¹ÜÀíÔ±Ä£Ê½Æô¶¯"<<endl;
+	cout<<"                                      å»ºè®®ä½¿ç”¨ç®¡ç†å‘˜æ¨¡å¼å¯åŠ¨"<<endl;
 	setcolor(7);
     cout<<"    input >>> ";
     string s;
@@ -46,22 +46,22 @@ int main()
     if(rs) 
     {
     	setcolor(4);
-        cout<<"                                  ºìÖ©Öë·´»÷ÏµÍ³Æô¶¯³É¹¦"<<endl;
+        cout<<"                                  çº¢èœ˜è››åå‡»ç³»ç»Ÿå¯åŠ¨æˆåŠŸ"<<endl;
     }
     if(jy)
     {
     	setcolor(11);
-        cout<<"                                  ¼«Óò·´»÷ÏµÍ³Æô¶¯³É¹¦"<<endl;
+        cout<<"                                  æžåŸŸåå‡»ç³»ç»Ÿå¯åŠ¨æˆåŠŸ"<<endl;
     }
     if(yk)
     {
     	setcolor(12);
-        cout<<"                                  Ù¤¿¨Ëû¿¨·´»÷ÏµÍ³Æô¶¯³É¹¦"<<endl;
+        cout<<"                                  ä¼½å¡ä»–å¡åå‡»ç³»ç»Ÿå¯åŠ¨æˆåŠŸ"<<endl;
     }
     if(rj)
     {
     	setcolor(12);
-        cout<<"                                  Èñ½ÝÔÆ½ÌÊÒ·´»÷ÏµÍ³Æô¶¯³É¹¦"<<endl;
+        cout<<"                                  é”æ·äº‘æ•™å®¤åå‡»ç³»ç»Ÿå¯åŠ¨æˆåŠŸ"<<endl;
     }
     Sleep(1000);
     ShowWindow(h,SW_HIDE);

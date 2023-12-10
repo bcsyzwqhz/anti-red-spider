@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -Wall -std=c++14
+FLAGS = -Wall -std=c++20 -O2 -fexec-charset=GBK
 TARGET = anti-red-spider
 STOPPER = stopper
 $(TARGET): main.cpp
