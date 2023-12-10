@@ -1,6 +1,7 @@
 #include<windows.h>
 #include<iostream>
 #include<string>
+#include<thread>
 using namespace std;
 void movexy(short x, short y)
 {
@@ -13,23 +14,26 @@ void setcolor(int num)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),num);
  } 
  
-void k_rs(bool enable)
+void k_rs(void)
 {
-	if(enable) system("taskkill /f /t /im REDAgent.exe");
+	while(1)
+	system("taskkill /f /t /im REDAgent.exe");
 } 
 
-void k_jy(bool enable)
+void k_jy(void)
 {
-	if(enable) system("taskkill /f /t /im StudentMain.exe");
+	while(1)
+	system("taskkill /f /t /im StudentMain.exe");
 }
 
-void k_yk(bool enable)
+void k_yk(void)
 {
-	if(enable) system("taskkill /f /t /im Student.exe");
+	while(1)
+	system("taskkill /f /t /im Student.exe");
 }
-void k_rj(bool enable)
+void k_rj(void)
 {
-	if(enable)
+	while(1)
 	{
 		system("taskkill /f /t /im RJAgent.exe");
         system("taskkill /f /t /im RJService.exe");
@@ -39,6 +43,6 @@ void k_rj(bool enable)
         system("taskkill /f /t /im CMLauncher.exe");
         system("taskkill /f /t /im Launcher.exe");
         system("taskkill /f /t /im RG-CloudManagerRemote_Setup.exe");
-	}
+    }
 }
 

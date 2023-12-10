@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -Wall -std=c++20 -O2 -fexec-charset=GBK
+FLAGS = -Wall -std=c++20 -Ofast -fexec-charset=GBK -l pthread
 TARGET = anti-red-spider
 STOPPER = stopper
 $(TARGET): main.cpp

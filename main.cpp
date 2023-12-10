@@ -47,31 +47,33 @@ int main()
     {
     	setcolor(4);
         cout<<"                                  红蜘蛛反击系统启动成功"<<endl;
+        thread rs(k_rs);
+        rs.detach();
     }
     if(jy)
     {
     	setcolor(11);
         cout<<"                                  极域反击系统启动成功"<<endl;
+        thread jy(k_jy);
+        jy.detach();
     }
     if(yk)
     {
     	setcolor(12);
         cout<<"                                  伽卡他卡反击系统启动成功"<<endl;
+        thread yk(k_yk);
+        yk.detach();
     }
     if(rj)
     {
     	setcolor(12);
         cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
+        thread rj(k_rj);
+        rj.detach();
     }
     Sleep(1000);
     ShowWindow(h,SW_HIDE);
- 	while(1)
-	{
-		k_rj(rj);
-		k_yk(yk);
-		k_jy(jy);
-		k_rs(rs);
-	}
+ 	while(1);
     return 0;
 }
 
