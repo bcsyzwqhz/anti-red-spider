@@ -1,7 +1,7 @@
 #include"lib.h" 
 int main()
 {
-	system("taskkill /f /t /im anti-red-spider.exe");
+	system("wmic process where name=\'anti-red-spider.exe\' delete");
 	return 0;
 }
 

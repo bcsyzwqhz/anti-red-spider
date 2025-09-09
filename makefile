@@ -1,6 +1,6 @@
 CC = g++
 RES = windres
-FLAGS = -Wall -std=c++20 -Ofast -fexec-charset=GBK
+FLAGS = -Wall -std=c++20 -fexec-charset=GBK -static
 TARGET = anti-red-spider
 STOPPER = stopper
 $(TARGET): main.cpp

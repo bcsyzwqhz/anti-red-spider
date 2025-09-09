@@ -3,7 +3,7 @@ int main()
 {
 	ios::sync_with_stdio(0);
 	HWND h;
-	h=FindWindow("ConsoleWindowClass",NULL);
+	h=FindWindow(L"ConsoleWindowClass",NULL);
     movexy(37, 7);
     cout<<"反电子教室系统"<<endl;
     cout<<endl;
