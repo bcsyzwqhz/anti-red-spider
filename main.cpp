@@ -1,79 +1,64 @@
 #include"lib.h"
 int main()
 {
-	ios::sync_with_stdio(0);
-	HWND h;
-	h=FindWindow(L"ConsoleWindowClass",NULL);
+    HWND h;
+	h=FindWindow("ConsoleWindowClass",NULL);
     movexy(37, 7);
     cout<<"反电子教室系统"<<endl;
     cout<<endl;
     cout<<"                                     目前可以反击:"<<endl;
-    setcolor(4);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_RED);
     cout<<"                      红蜘蛛多媒体网络教室 - 输入 k-rs即可反击"<<endl;
-	setcolor(11);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
     cout<<"                              极域电子教室 - 输入 k-jy即可反击"<<endl;
-    setcolor(12);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
     cout<<"                          伽卡他卡电子教室 - 输入 k-yk即可反击"<<endl;
-	setcolor(7);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     cout<<"                                锐捷云教室 - 输入 k-rj即可反击"<<endl;
-	setcolor(10);
-    cout<<"			   		如要同时反击多个软件，请用英文半角逗号分隔"<<endl;
-    cout<<"	                            	比如：k-rs,k-rj"<<endl;
-    setcolor(13);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+    cout<<"                                  启动成功后，窗口会自动消失，"<<endl;
+    cout<<"                                        不要重复打开！"<<endl;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+    cout<<"			  注意：本系统仅支持Windows 10及以下系统，"<<endl;
+	cout<<"				Windows 11窗口不会消失！" <<endl;
 	cout<<"                                      建议使用管理员模式启动"<<endl;
-	setcolor(7);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     cout<<"    input >>> ";
     string s;
-    bool rj=0,yk=0,rs=0,jy=0;
     cin>>s;
-    s+=',';
-    int len=s.size(),last=0,leng=1;
-    for(int i=1;i<len;i++)
-    {
-    	if(s[i]==',')
-    	{
-    		if(s.substr(last,leng)=="k-rs")	rs=1;
-    		if(s.substr(last,leng)=="k-jy")jy=1;
-    		if(s.substr(last,leng)=="k-rj")	rj=1;
-    		if(s.substr(last,leng)=="k-yk")	yk=1;
-    		last=i+1,leng=0;
-    	}
-    	else
-    	leng++;
-    	
-    }
-    system("cls");
-    if(rs) 
-    {
-    	setcolor(4);
+    if(s=="k-rs"){
+        system("cls");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),FOREGROUND_RED);
         cout<<"                                  红蜘蛛反击系统启动成功"<<endl;
-        thread rs(k_rs);
-        rs.detach();
+        Sleep(1000);
+        ShowWindow(h,0);
+        k_rs();
     }
-    if(jy)
-    {
-    	setcolor(11);
+    if(s=="k-jy"){
+        system("cls");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
         cout<<"                                  极域反击系统启动成功"<<endl;
-        thread jy(k_jy);
-        jy.detach();
+        Sleep(1000);
+        ShowWindow(h,0);
+        k_jy();
+        
     }
-    if(yk)
-    {
-    	setcolor(12);
+    if(s=="k-yk"){
+        system("cls");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
         cout<<"                                  伽卡他卡反击系统启动成功"<<endl;
-        thread yk(k_yk);
-        yk.detach();
-    }
-    if(rj)
-    {
-    	setcolor(12);
+        Sleep(1000);
+        ShowWindow(h,0);
+        k_yk();
+    } 
+    if(s=="k-rj")
+	{
+		system("cls");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
         cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
-        thread rj(k_rj);
-        rj.detach();
-    }
-    Sleep(1000);
-    ShowWindow(h,SW_HIDE);
- 	while(1);
+        Sleep(1000);
+        ShowWindow(h,0);
+        k_rj();
+	} 
     return 0;
 }
-

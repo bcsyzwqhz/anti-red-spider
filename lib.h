@@ -23,7 +23,11 @@ void k_rs(void)
 void k_jy(void)
 {
 	while(1)
-	system("wmic process where name=\'StudentMain.exe\' delete");
+	{
+		system("wmic process where name=\'StudentMain.exe\' delete");
+		system("wmic process where name=\'Smonitor.exe\' delete");
+	}
+	
 }
 
 void k_yk(void)
