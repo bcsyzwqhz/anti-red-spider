@@ -12,12 +12,12 @@ void movexy(short x, short y)
 void setcolor(int num)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),num);
- } 
+} 
  
 void k_rs(void)
 {
 	while(1)
-	system("wmic process where name=\'REDAgent.exe\' delete");
+		system("wmic process where name=\'REDAgent.exe\' delete");
 } 
 
 void k_jy(void)
@@ -33,7 +33,7 @@ void k_jy(void)
 void k_yk(void)
 {
 	while(1)
-	system("wmic process where name=\'Student.exe\' delete");
+		system("wmic process where name=\'Student.exe\' delete");
 }
 void k_rj(void)
 {
