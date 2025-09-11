@@ -1,11 +1,39 @@
 #include<windows.h>
 #include<iostream>
 #include<string>
-#include<thread>
+#include<TlHelp32.h>
+#include<Psapi.h>
 using namespace std;
-void movexy(short x, short y)
+HANDLE getprocesshandle(LPCWSTR lpName)
 {
-    COORD position={x, y};
+	DWORD dwPid=0;
+    HANDLE hProcess=NULL,hProcessSnap;
+    PROCESSENTRY32 pe32;
+    hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
+    if(hProcessSnap==INVALID_HANDLE_VALUE)
+         return NULL;
+    pe32.dwSize=sizeof(PROCESSENTRY32);
+    if(!Process32First(hProcessSnap,&pe32))
+    {
+        CloseHandle(hProcessSnap);
+        return NULL;
+    }
+    do
+    {
+        if(!wcscmp(pe32.szExeFile,lpName)) 
+		{
+            dwPid=pe32.th32ProcessID;
+            hProcess=OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
+            break;
+        }
+
+    }while(Process32Next(hProcessSnap,&pe32));
+    CloseHandle(hProcessSnap);
+    return hProcess;
+}
+void movexy(short x,short y)
+{
+    COORD position={x,y};
     HANDLE hOut=GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleCursorPosition(hOut, position);
 }
