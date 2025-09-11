@@ -6,30 +6,20 @@
 using namespace std;
 HANDLE getprocesshandle(LPCWSTR lpName)
 {
-	DWORD dwPid=0;
-    HANDLE hProcess=NULL,hProcessSnap;
-    PROCESSENTRY32 pe32;
+    HANDLE hProcessSnap;
+    PROCESSENTRY32 pe32={sizeof(pe32)};
     hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
     if(hProcessSnap==INVALID_HANDLE_VALUE)
         return NULL;
-    pe32.dwSize=sizeof(PROCESSENTRY32);
-    if(!Process32First(hProcessSnap,&pe32))
-    {
-        CloseHandle(hProcessSnap);
-        return NULL;
-    }
-    do
-    {
-        if(!wcscmp(LPCWSTR(pe32.szExeFile),lpName)) 
+	for(bool ok=Process32First(hProcessSnap,&pe32);ok;ok=Process32First(hProcessSnap,&pe32))
+	{
+		if(!wcscmp(LPCWSTR(pe32.szExeFile),lpName))
 		{
-            dwPid=pe32.th32ProcessID;
-            hProcess=OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
-            break;
-        }
-
-    }while(Process32Next(hProcessSnap,&pe32));
-    CloseHandle(hProcessSnap);
-    return hProcess;
+			CloseHandle(hProcessSnap);
+			return OpenProcess(PROCESS_ALL_ACCESS,FALSE,pe32.th32ProcessID);
+		}
+	}
+	return NULL;
 }
 void movexy(short x,short y)
 {
@@ -56,6 +46,19 @@ void k_rs(void)
 
 void k_jy(void)
 {
+	
+	HANDLE proc;
+	while(1)
+	{
+		proc=getprocesshandle(L"Student.exe");
+		if(proc==NULL)
+			continue;
+		TerminateProcess(proc,0);
+	}
+}
+
+void k_yk(void)
+{
 	HANDLE procm,procs;
 	while(1)
 	{
@@ -65,19 +68,6 @@ void k_jy(void)
 			TerminateProcess(procm,0);
 		if(procs!=NULL)
 			TerminateProcess(procs,0);
-	}
-	
-}
-
-void k_yk(void)
-{
-	HANDLE proc;
-	while(1)
-	{
-		proc=getprocesshandle(L"Student.exe");
-		if(proc==NULL)
-			continue;
-		TerminateProcess(proc,0);
 	}
 }
 void k_rj(void)
