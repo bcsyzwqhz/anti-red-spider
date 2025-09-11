@@ -2,7 +2,7 @@
 int main()
 {
     HWND h;
-	h=FindWindow("ConsoleWindowClass",NULL);
+	h=FindWindow(("ConsoleWindowClass"),NULL);
     movexy(37, 7);
     cout<<"反电子教室系统"<<endl;
     cout<<endl;

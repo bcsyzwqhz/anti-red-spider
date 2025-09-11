@@ -1,7 +1,7 @@
 #include<windows.h>
 #include<iostream>
 #include<string>
-#include<TlHelp32.h>
+#include<tlhelp32.h>
 #include<Psapi.h>
 using namespace std;
 HANDLE getprocesshandle(LPCWSTR lpName)
@@ -11,7 +11,7 @@ HANDLE getprocesshandle(LPCWSTR lpName)
     PROCESSENTRY32 pe32;
     hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
     if(hProcessSnap==INVALID_HANDLE_VALUE)
-         return NULL;
+        return NULL;
     pe32.dwSize=sizeof(PROCESSENTRY32);
     if(!Process32First(hProcessSnap,&pe32))
     {
@@ -20,7 +20,7 @@ HANDLE getprocesshandle(LPCWSTR lpName)
     }
     do
     {
-        if(!wcscmp(pe32.szExeFile,lpName)) 
+        if(!wcscmp(LPCWSTR(pe32.szExeFile),lpName)) 
 		{
             dwPid=pe32.th32ProcessID;
             hProcess=OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
@@ -44,24 +44,41 @@ void setcolor(int num)
  
 void k_rs(void)
 {
+	HANDLE proc;
 	while(1)
-		system("wmic process where name=\'REDAgent.exe\' delete");
+	{
+		proc=getprocesshandle(L"REDAgent.exe");
+		if(proc==NULL)
+			continue;
+		TerminateProcess(proc,0);
+	}
 } 
 
 void k_jy(void)
 {
+	HANDLE procm,procs;
 	while(1)
 	{
-		system("wmic process where name=\'StudentMain.exe\' delete");
-		system("wmic process where name=\'Smonitor.exe\' delete");
+		procm=getprocesshandle(L"StudentMain.exe");
+		procs=getprocesshandle(L"Smonitor.exe");
+		if(procm!=NULL)
+			TerminateProcess(procm,0);
+		if(procs!=NULL)
+			TerminateProcess(procs,0);
 	}
 	
 }
 
 void k_yk(void)
 {
+	HANDLE proc;
 	while(1)
-		system("wmic process where name=\'Student.exe\' delete");
+	{
+		proc=getprocesshandle(L"Student.exe");
+		if(proc==NULL)
+			continue;
+		TerminateProcess(proc,0);
+	}
 }
 void k_rj(void)
 {
@@ -80,4 +97,3 @@ void k_rj(void)
         system("wmic process where name=\'ESTService.exe\' delete");
     }
 }
-
