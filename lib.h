@@ -1,8 +1,10 @@
+#pragma once
 #include<windows.h>
 #include<iostream>
 #include<string>
 #include<tlhelp32.h>
 #include<Psapi.h>
+#include<unistd.h>
 using namespace std;
 HANDLE getprocesshandle(LPCWSTR lpName)
 {
