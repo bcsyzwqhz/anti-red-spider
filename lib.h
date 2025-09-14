@@ -92,18 +92,20 @@ void k_yk(void)
 }
 void k_rj(void)
 {
+	HANDLE cm[4];
 	while(1)
 	{
-		system("wmic process where name=\'RJAgent.exe\' delete");
-        system("wmic process where name=\'RJService.exe");
-        system("wmic process where name=\'RG-CloudManagerRemote.exe\' delete");
-        system("wmic process where name=\'CMApp.exe\' delete");
-        system("wmic process where name=\'CMService.exe\' delete");
-        system("wmic process where name=\'CMLauncher.exe\' delete");
-        system("wmic process where name=\'Launcher.exe\' delete");
-        system("wmic process where name=\'RG-CloudManagerRemote_Setup.exe\' delete");
-        system("wmic process where name=\'ESTRemote.exe\' delete");
-        system("wmic process where name=\'ESTRemotePro.exe\' delete");
-        system("wmic process where name=\'ESTService.exe\' delete");
+		cm[0]=getprocesshandle("CMApp.exe");
+		cm[1]=getprocesshandle("CMService.exe");
+        cm[2]=getprocesshandle("CMLauncher.exe");
+		cm[3]=getprocesshandle("ESTRemote.exe");
+		for(int i=0;i<4;i++)
+			if(cm[i]!=NULL)
+			{
+				cout<<"Found!\n";
+				if(!TerminateProcess(cm[i],0))
+					cout<<"Failed!\n"<<GetLastError()<<endl;
+			}
+		Sleep(50);
     }
 }

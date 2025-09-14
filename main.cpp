@@ -51,7 +51,7 @@ int main()
 		setcolor(12);
         cout<<"                                  伽卡他卡反击系统启动成功"<<endl;
         Sleep(1000);
-//        ShowWindow(h,0);
+        ShowWindow(h,0);
         k_yk();
     } 
     if(s=="k-rj")
@@ -60,7 +60,7 @@ int main()
 		setcolor(12);
         cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
         Sleep(1000);
-        ShowWindow(h,0);
+//        ShowWindow(h,0);
         k_rj();
 	} 
     return 0;
