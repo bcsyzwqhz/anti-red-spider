@@ -1,7 +1,8 @@
 #include"lib.h" 
 int main()
 {
-	system("wmic process where name=\'anti-red-spider.exe\' delete");
+	HANDLE anti=getprocesshandle("anti-red-spider.exe");
+	TerminateProcess(anti,0);
 	return 0;
 }
 
