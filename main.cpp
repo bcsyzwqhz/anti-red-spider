@@ -3,7 +3,8 @@ int main()
 {
     HWND h;
 	h=FindWindow(("ConsoleWindowClass"),NULL);
-    movexy(37, 7);
+	EnableDebugPrivilege();
+    movexy(37,7);
     cout<<"反电子教室系统"<<endl;
     cout<<endl;
     cout<<"                                     目前可以反击:"<<endl;
@@ -60,7 +61,7 @@ int main()
 		setcolor(12);
         cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
         Sleep(1000);
-//        ShowWindow(h,0);
+        ShowWindow(h,0);
         k_rj();
 	} 
     return 0;

@@ -6,6 +6,28 @@
 #include<Psapi.h>
 #include<unistd.h>
 using namespace std;
+bool EnableDebugPrivilege()  
+{  
+    HANDLE hToken;  
+    LUID sedebugnameValue;  
+    TOKEN_PRIVILEGES tkp;  
+    if(!OpenProcessToken(GetCurrentProcess(),TOKEN_ADJUST_PRIVILEGES|TOKEN_QUERY,&hToken))
+        return FALSE;  
+    if(!LookupPrivilegeValue(NULL, SE_DEBUG_NAME,&sedebugnameValue)) 
+    {  
+        CloseHandle(hToken);  
+        return false;  
+    }  
+    tkp.PrivilegeCount=1;  
+    tkp.Privileges[0].Luid=sedebugnameValue;  
+    tkp.Privileges[0].Attributes=SE_PRIVILEGE_ENABLED;  
+    if(!AdjustTokenPrivileges(hToken,FALSE,&tkp,sizeof(tkp),NULL,NULL))
+    {  
+        CloseHandle(hToken);  
+        return false;  
+    }  
+    return true;  
+}
 HANDLE getprocesshandle(LPCSTR lpName)
 {
     HANDLE hProcessSnap=INVALID_HANDLE_VALUE;
@@ -13,15 +35,6 @@ HANDLE getprocesshandle(LPCSTR lpName)
     hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
     if(hProcessSnap==INVALID_HANDLE_VALUE)
         return NULL;
-/*	for(bool ok=Process32First(hProcessSnap,&pe32);ok;ok=Process32First(hProcessSnap,&pe32))
-	{
-		if(!lstrcmpiA(pe32.szExeFile,lpName))
-		{
-			CloseHandle(hProcessSnap);
-			return OpenProcess(PROCESS_ALL_ACCESS,FALSE,pe32.th32ProcessID);
-		}
-	}
-*/
 	do
 	{
 		if(!lstrcmpiA(pe32.szExeFile,lpName))
@@ -92,6 +105,7 @@ void k_yk(void)
 }
 void k_rj(void)
 {
+	int cnt=0;
 	HANDLE cm[4];
 	while(1)
 	{
@@ -101,11 +115,11 @@ void k_rj(void)
 		cm[3]=getprocesshandle("ESTRemote.exe");
 		for(int i=0;i<4;i++)
 			if(cm[i]!=NULL)
-			{
-				cout<<"Found!\n";
-				if(!TerminateProcess(cm[i],0))
-					cout<<"Failed!\n"<<GetLastError()<<endl;
-			}
+				TerminateProcess(cm[i],0);
+			else
+				cnt++;
+		if(cnt>=200)
+			break;
 		Sleep(50);
     }
 }
