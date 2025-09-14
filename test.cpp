@@ -1,7 +1,7 @@
 #include"lib.h"
 int main()
 {
-	LPCSTR lpName="targ.exe";
+	LPCSTR lpName="REDAgent.exe";
 	HANDLE hProcessSnap;
     PROCESSENTRY32 pe32={sizeof(pe32)};
     hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);

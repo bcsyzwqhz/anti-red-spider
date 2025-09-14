@@ -6,21 +6,30 @@
 #include<Psapi.h>
 #include<unistd.h>
 using namespace std;
-HANDLE getprocesshandle(LPCWSTR lpName)
+HANDLE getprocesshandle(LPCSTR lpName)
 {
-    HANDLE hProcessSnap;
+    HANDLE hProcessSnap=INVALID_HANDLE_VALUE;
     PROCESSENTRY32 pe32={sizeof(pe32)};
     hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
     if(hProcessSnap==INVALID_HANDLE_VALUE)
         return NULL;
-	for(bool ok=Process32First(hProcessSnap,&pe32);ok;ok=Process32First(hProcessSnap,&pe32))
+/*	for(bool ok=Process32First(hProcessSnap,&pe32);ok;ok=Process32First(hProcessSnap,&pe32))
 	{
-		if(!wcscmp(LPCWSTR(pe32.szExeFile),lpName))
+		if(!lstrcmpiA(pe32.szExeFile,lpName))
 		{
 			CloseHandle(hProcessSnap);
 			return OpenProcess(PROCESS_ALL_ACCESS,FALSE,pe32.th32ProcessID);
 		}
 	}
+*/
+	do
+	{
+		if(!lstrcmpiA(pe32.szExeFile,lpName))
+		{
+			CloseHandle(hProcessSnap);
+			return OpenProcess(PROCESS_ALL_ACCESS,FALSE,pe32.th32ProcessID);
+		}
+	}while(Process32Next(hProcessSnap,&pe32));
 	return NULL;
 }
 void movexy(short x,short y)
@@ -39,20 +48,20 @@ void k_rs(void)
 	HANDLE proc;
 	while(1)
 	{
-		proc=getprocesshandle(L"REDAgent.exe");
+		proc=getprocesshandle("REDAgent.exe");
 		if(proc==NULL)
 			continue;
 		TerminateProcess(proc,0);
+		Sleep(50);
 	}
 } 
 
 void k_jy(void)
 {
-	
 	HANDLE proc;
 	while(1)
 	{
-		proc=getprocesshandle(L"Student.exe");
+		proc=getprocesshandle("Student.exe");
 		if(proc==NULL)
 			continue;
 		TerminateProcess(proc,0);
@@ -64,8 +73,8 @@ void k_yk(void)
 	HANDLE procm,procs;
 	while(1)
 	{
-		procm=getprocesshandle(L"StudentMain.exe");
-		procs=getprocesshandle(L"Smonitor.exe");
+		procm=getprocesshandle("StudentMain.exe");
+		procs=getprocesshandle("Smonitor.exe");
 		if(procm!=NULL)
 			TerminateProcess(procm,0);
 		if(procs!=NULL)

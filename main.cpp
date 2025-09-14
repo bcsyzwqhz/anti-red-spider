@@ -26,7 +26,8 @@ int main()
     cout<<"    input >>> ";
     string s;
     cin>>s;
-    if(s=="k-rs"){
+    if(s=="k-rs")
+	{
         system("cls");
 		setcolor(4);
         cout<<"                                  红蜘蛛反击系统启动成功"<<endl;
@@ -34,7 +35,8 @@ int main()
         ShowWindow(h,0);
         k_rs();
     }
-    if(s=="k-jy"){
+    if(s=="k-jy")
+	{
         system("cls");
 		setcolor(11);
         cout<<"                                  极域反击系统启动成功"<<endl;
@@ -43,7 +45,8 @@ int main()
         k_jy();
         
     }
-    if(s=="k-yk"){
+    if(s=="k-yk")
+	{
         system("cls");
 		setcolor(12);
         cout<<"                                  伽卡他卡反击系统启动成功"<<endl;
