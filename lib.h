@@ -36,7 +36,7 @@ void movexy(short x,short y)
 {
     COORD position={x,y};
     HANDLE hOut=GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleCursorPosition(hOut, position);
+    SetConsoleCursorPosition(hOut,position);
 }
 void setcolor(int num)
 {
@@ -61,24 +61,33 @@ void k_jy(void)
 	HANDLE proc;
 	while(1)
 	{
-		proc=getprocesshandle("Student.exe");
+		proc=getprocesshandle("StudentMain.exe");
 		if(proc==NULL)
 			continue;
 		TerminateProcess(proc,0);
+		Sleep(50);
 	}
 }
 
 void k_yk(void)
 {
+	int cnt=0;
 	HANDLE procm,procs;
 	while(1)
 	{
-		procm=getprocesshandle("StudentMain.exe");
+		procm=getprocesshandle("Student.exe");
 		procs=getprocesshandle("Smonitor.exe");
-		if(procm!=NULL)
+		if(procm==NULL)
+		{
+			cnt++;
+			if(cnt>=100)
+				break;
+		}
+		else
 			TerminateProcess(procm,0);
 		if(procs!=NULL)
 			TerminateProcess(procs,0);
+		Sleep(50);
 	}
 }
 void k_rj(void)
