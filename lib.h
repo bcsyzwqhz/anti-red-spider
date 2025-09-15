@@ -58,13 +58,15 @@ void setcolor(int num)
  
 void k_rs(void)
 {
-	HANDLE proc;
+	HANDLE proc,procp;
 	while(1)
 	{
 		proc=getprocesshandle("REDAgent.exe");
-		if(proc==NULL)
+		procp=getprocesshandle("ePointer.exe");
+		if(proc==NULL&&procp==NULL)
 			continue;
 		TerminateProcess(proc,0);
+		TerminateProcess(procp,0);
 		Sleep(50);
 	}
 } 
