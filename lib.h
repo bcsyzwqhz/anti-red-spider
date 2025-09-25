@@ -111,16 +111,16 @@ void k_rj(void)
 	HANDLE cm[4];
 	while(1)
 	{
-		cm[0]=getprocesshandle("CMApp.exe");
+		cm[2]=getprocesshandle("CMApp.exe");
 		cm[1]=getprocesshandle("CMService.exe");
-        cm[2]=getprocesshandle("CMLauncher.exe");
+        cm[0]=getprocesshandle("CMLauncher.exe");
 		cm[3]=getprocesshandle("ESTRemote.exe");
 		for(int i=0;i<4;i++)
 			if(cm[i]!=NULL)
 				TerminateProcess(cm[i],0);
 			else
 				cnt++;
-		if(cnt>=200)
+		if(cnt>=2000)
 			break;
 		Sleep(50);
     }
