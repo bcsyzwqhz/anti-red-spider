@@ -117,10 +117,14 @@ void k_rj(void)
 		cm[3]=getprocesshandle("ESTRemote.exe");
 		for(int i=0;i<4;i++)
 			if(cm[i]!=NULL)
+			{
 				if(!TerminateProcess(cm[i],0))
+				{
 					#ifdef DEBUG
 						cout<<GetLastError()<<endl;
-					#endif				
+					#endif	
+				}
+			}		
 			else
 				cnt++;
 		if(cnt>=2000)
