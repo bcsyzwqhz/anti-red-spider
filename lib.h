@@ -33,8 +33,8 @@ HANDLE getprocesshandle(LPCSTR lpName)
     HANDLE hProcessSnap=INVALID_HANDLE_VALUE;
     PROCESSENTRY32 pe32={sizeof(pe32)};
     hProcessSnap=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
-    if(hProcessSnap==INVALID_HANDLE_VALUE)
-        return NULL;
+//   if(hProcessSnap==INVALID_HANDLE_VALUE)
+//       return NULL;
 	do
 	{
 		if(!lstrcmpiA(pe32.szExeFile,lpName))

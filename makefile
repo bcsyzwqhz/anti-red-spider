@@ -5,6 +5,8 @@ TARGET = anti-red-spider
 STOPPER = stopper
 TEST = test
 TARG = targ
+
+all:$(TARGET)
 $(TARGET): main.cpp
 	$(RES) icons.rc icon.o
 	$(CC) $(FLAGS) main.cpp icon.o -o $(TARGET)
@@ -18,3 +20,6 @@ clean:
 	$(RM) icon.o
 #	$(RM) test
 #	$(RM) targ
+
+debug:
+	$(CC) $(FLAGS) main.cpp -o $(TARGET) -DDEBUG
