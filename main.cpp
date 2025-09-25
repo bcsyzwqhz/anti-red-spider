@@ -3,11 +3,13 @@ int main()
 {
     HWND h;
 	h=FindWindow(("ConsoleWindowClass"),NULL);
+	movexy(37,7);
 	if(!EnableDebugPrivilege())
-#ifdef DEBUG
-		cout<<GetLastError()<<endl;
-#endif
-    movexy(37,7);
+    {
+		#ifdef DEBUG
+		    cout<<GetLastError()<<endl;
+        #endif
+	}
     cout<<"反电子教室系统"<<endl;
     cout<<endl;
     cout<<"                                     目前可以反击："<<endl;
