@@ -3,7 +3,7 @@ int main()
 {
     HWND h;
 	h=FindWindow(("ConsoleWindowClass"),NULL);
-	cout<<EnableDebugPrivilege()<<endl;
+	EnableDebugPrivilege();
     movexy(37,7);
     cout<<"反电子教室系统"<<endl;
     cout<<endl;
