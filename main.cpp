@@ -34,8 +34,10 @@ int main()
         system("cls");
 		setcolor(4);
         cout<<"                                  红蜘蛛反击系统启动成功"<<endl;
+#ifndef DEBUG
         Sleep(1000);
         ShowWindow(h,0);
+#endif
         k_rs();
     }
     if(s=="jy")
@@ -43,8 +45,10 @@ int main()
         system("cls");
 		setcolor(11);
         cout<<"                                  极域反击系统启动成功"<<endl;
+#ifndef DEBUG
         Sleep(1000);
         ShowWindow(h,0);
+#endif
         k_jy();
         
     }
@@ -53,8 +57,10 @@ int main()
         system("cls");
 		setcolor(12);
         cout<<"                                  伽卡他卡反击系统启动成功"<<endl;
+#ifndef DEBUG
         Sleep(1000);
         ShowWindow(h,0);
+#endif
         k_yk();
     } 
     if(s=="rj")
@@ -62,8 +68,10 @@ int main()
 		system("cls");
 		setcolor(12);
         cout<<"                                  锐捷云教室反击系统启动成功"<<endl;
+#ifndef DEBUG
         Sleep(1000);
         ShowWindow(h,0);
+#endif
         k_rj();
 	} 
     return 0;
